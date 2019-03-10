@@ -32,7 +32,10 @@ var OpenloadDecoder = {
           var a0909Array = getMatches(a0909,a0909Pattern,1);
           for(var k = 0 ; k < a0909Array.length ;  k++)
           {
-            var bbbbRegex = new RegExp("<p id=\"" + a0909Array[k] + "\" style=\"\">(.+)<\/p>\"\"", 'g');
+            new RegExp("<script[^>]*>([\s\S]*?)<\/script>",'g');
+
+            var bbbbRegex = new RegExp("<p id=\"" + a0909Array[k] + "\" style=\"\">(.+)<\/p>", "g");
+            console.log(bbbbRegex)
             Log['\x64'](bbbbRegex)
             var bbbbArray = getMatches(O,bbbbRegex,1);
             for(var l = 0; l < bbbbArray.length; l++)
