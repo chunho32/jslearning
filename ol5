@@ -19,6 +19,7 @@ var CASE_INSENSITIVE = 0x2;
 var OpenloadDecoder = {
     'decode': function (O) {
       //Log['\x64']('jj');
+      var c2 = [];
       var scriptPattern = /<script[^>]*>([\s\S]*?)<\/script>/gi;
       var scriptMatches = getMatches(O, scriptPattern, 1);
       for (var i = scriptMatches.length - 1; i >= 0; i--) {
@@ -26,15 +27,24 @@ var OpenloadDecoder = {
         var aaEncodedPattern = /(\uFF9F\u03C9\uFF9F\uFF89[\s\S]*?\('_'\);)/g;
         var aaEncodedArr = getMatches(script, aaEncodedPattern, 1);
         for (var j = 0; j < aaEncodedArr.length; j++) {
-          Log['\x64'](aadecode(aaEncodedArr[j]));
+          var a0909 = aadecode(aaEncodedArr[j]);
+          var a0909Pattern = /cc_cc_cc=''\+'(.+)\';$/g;
+          var a0909Array = getMatches(a0909,a0909Pattern,1);
+          for(var k = 0 ; k < a0909Array.length ;  k++)
+          {
+            var bbbbRegex = (/<p id="xxxx" style="">(.+)<\/p>/g).replace(xxxx,a0909Array[k]);
+            var bbbbArray = getMatches(O,bbbbRegex,1);
+            for(var l = 0; l < bbbbArray.length; l++)
+            {
+              
+              var result = decode(bbbbArray[l]);
+              Log['\x64'](result);
+              c2.push("https://openload.co/stream/" + result + "?mime=true");
+              
+            }
+          }
         }
       }
-      var c2 = [];
-      var xxxcode = "5120e189742791495dbcaab781bbf80f5c3d727b9b831d75ec7105ab6b0e0ca7a63cd9297740575c0b6e7b6451106c507370296063426a7902554e6a4861015c6a5c76630243497d595c03436d6d465b014f43645d4b03437444520c437b72495a01"
-      var result = decode(xxxcode);
-      Log['\x64'](result);
-      c2.push("https://openload.co/stream/" + result + "?mime=true");
-      
       return JSON.stringify(c2);
     },
     'isEnabled': function () {
@@ -367,5 +377,3 @@ function getMatches(string, regex, index) {
   }
   return matches;
 }
-
-OpenloadDecoder.decode("asdasd")
