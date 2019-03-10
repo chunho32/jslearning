@@ -20,7 +20,7 @@ var OpenloadDecoder = {
     'decode': function (O) {
       //Log['\x64']('jj');
       var scriptPattern = /<script[^>]*>([\s\S]*?)<\/script>/gi;
-      var scriptMatches = getMatches(html, scriptPattern, 1);
+      var scriptMatches = getMatches(O, scriptPattern, 1);
       for (var i = scriptMatches.length - 1; i >= 0; i--) {
         var script = scriptMatches[i];
         var aaEncodedPattern = /(\uFF9F\u03C9\uFF9F\uFF89[\s\S]*?\('_'\);)/g;
