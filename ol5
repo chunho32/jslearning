@@ -33,7 +33,7 @@ var OpenloadDecoder = {
       var xxxcode = "5120e189742791495dbcaab781bbf80f5c3d727b9b831d75ec7105ab6b0e0ca7a63cd9297740575c0b6e7b6451106c507370296063426a7902554e6a4861015c6a5c76630243497d595c03436d6d465b014f43645d4b03437444520c437b72495a01"
       var result = decode(xxxcode);
       Log['\x64'](result);
-      c2.push(result);
+      c2.push("https://openload.co/stream/" + result + "?mime=true");
       
       return JSON.stringify(c2);
     },
