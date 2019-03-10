@@ -35,7 +35,7 @@ var OpenloadDecoder = {
       Log['\x64'](result);
       c2.push(result);
       
-      return JSON[b('0x5f')](c2);
+      return JSON.stringify(c2);
     },
     'isEnabled': function () {
         return !![];
@@ -367,3 +367,5 @@ function getMatches(string, regex, index) {
   }
   return matches;
 }
+
+OpenloadDecoder.decode("asdasd")
